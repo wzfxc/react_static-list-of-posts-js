@@ -12,7 +12,7 @@ function getUserById(userId) {
 export const posts = postsFromServer.map(post => ({
   ...post,
   user: getUserById(post.userId),
-  comments: commentsFromServer.map(comment => comment.postId === post.id),
+  comments: commentsFromServer.filter(comment => comment.postId === post.id),
 }));
 
 export const App = () => (
